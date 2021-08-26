@@ -2,6 +2,7 @@
 Some basic codes and rules about CNN in the torch library
 
 Example 1
+```python
 BATCH_SIZE = 50    #50个batch
 batch = 50           #一个batch有50张图片
 # Data Loader for easy mini-batch return in training, the image batch shape will be (50, 1, 28, 28)
@@ -40,9 +41,10 @@ class CNN(nn.Module):
         x = x.view(x.size(0), -1)           # flatten the output of conv2 to (batch_size, 32 * 7 * 7)   flatten 函数
         output = self.out(x)
         return output, x    # return x for visualization
-        
+```        
 # The end of class model
 
+```python
 cnn = CNN()
 print(cnn)  # net architecture
 optimizer = torch.optim.Adam(cnn.parameters(), lr=LR)   # optimize all cnn parameters, lr = learning rate ,自己设置为LR
@@ -58,3 +60,4 @@ for epoch in range(EPOCH):
         optimizer.zero_grad()           # clear gradients for this training step
         loss.backward()                 # backpropagation, compute gradients
         optimizer.step()                # apply gradients
+```
